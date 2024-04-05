@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> GetWeatherForecast([FromBody] LocationData location)
         {
             var apiKey = _configuration["open_weather_api_key"];
-            var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={location.Latitude}&lon={location.Longitude}&exclude=minutely,hourly&appid={apiKey}";
+            var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={location.Latitude}&lon={location.Longitude}&appid={apiKey}&units=metric";
             using (var client = new HttpClient())
             {
                 //W-TODO: Log err from OpenWeatherMap

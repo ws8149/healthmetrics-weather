@@ -8,7 +8,7 @@ namespace WebApplication1.Models
 
         public CityContext(DbContextOptions options) : base(options)
         {
-            
+            CitySeeder.SeedCities(this);
         }
     }
 }

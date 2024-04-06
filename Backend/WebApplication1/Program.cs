@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<CityContext>(options =>
 {
-    options.UseSqlServer("Server=LAPTOP-U2G1SJLR\\SQLEXPRESS;Database=CityDB;Trusted_Connection=True;TrustServerCertificate=True");
+    // get connection string from appsettings.json
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
 });
 
 builder.Services.AddControllers();

@@ -4,7 +4,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/cities")]
     public class CityController : ControllerBase
     {
 
@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
             _context = context;   
         }
 
-        [HttpGet("/GetCities")]
+        [HttpGet]
         public IActionResult GetCities()
         {
             List<City> cities = _context.Cities.ToList();

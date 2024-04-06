@@ -4,7 +4,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/weather")]
     public class WeatherForecastController : ControllerBase
     {
         
@@ -18,10 +18,10 @@ namespace WebApplication1.Controllers
         }
 
         // Get weather forecast for a specific city using OpenWeatherMap API
-        [HttpPost]
-        public async Task<IActionResult> GetWeatherForecast([FromBody] LocationData location)
+        [HttpPost("forecast")]
+        public async Task<IActionResult> WeatherForecast([FromBody] LocationData location)
         {
-            var apiKey = _configuration["open_weather_api_key"];
+            var apiKey = _configuration["OpenWeatherApiKey"];
             var url = $"https://api.openweathermap.org/data/2.5/forecast?lat={location.Latitude}&lon={location.Longitude}&appid={apiKey}&units=metric";
             using (var client = new HttpClient())
             {

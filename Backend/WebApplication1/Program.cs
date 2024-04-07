@@ -6,8 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<CityContext>(options =>
 {
-    // get connection string from appsettings.json
     options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
+});
+
+// Wire up azure redis connection
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("AzureRedisConnection");
 });
 
 builder.Services.AddControllers();
